@@ -1,5 +1,18 @@
 {% extends 'lookup/base.html' %}
 
 {% block content %}
-<h1>Something</h1>
+{% if api.message == "city does not exists" %}
+	<div class="row">
+		<p>The city with name {{ city }} does not exists </p>
+	</div>
+{% else %}
+	<div class="row m-2 bg-dark text-warning">
+		<div class="col-12 text-light">
+			<h2>{{ city }}</h2>
+		</div>
+		<div class="col-12">
+			Temperature (Celsius Degree): {{ temp }}
+		</div>
+	</div>
+{% endif %}
 {% endblock content %}
