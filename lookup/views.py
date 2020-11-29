@@ -11,18 +11,24 @@ def getCityWeather(city):
     try:
         api = json.loads(api_request.content)
     except Exception as e:
-        api = {"message":"city does not exist"}
+        api = None
         
     try:
         temp = "{:0.2}".format(api["main"]["temp"] - 273.15)
     except:
-        pass
+        temp = None
 
-    return city, temp, api
+    return city.capitalize(), temp
 
-def home(request, city=None):
-    city, temp, api = getCityWeather(city="New York")
-    context = {"api": api, "temp": temp, "city": city}
+def home(request):
+    if request.method == "POST":
+        city = request.POST["city"]
+    else:
+        city = ""
+    city, temp = getCityWeather(city)
+    print(temp)
+    print(city)
+    context = {"temp": temp, "city": city}
 
 
     return render(request, "lookup/home.html", context)
