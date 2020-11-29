@@ -14,7 +14,7 @@ def getCityWeather(city):
         api = None
         
     try:
-        temp = "{:0.2}".format(api["main"]["temp"] - 273.15)
+        temp = "{:.1f}".format(api["main"]["temp"] - 273.15)
     except:
         temp = None
 
