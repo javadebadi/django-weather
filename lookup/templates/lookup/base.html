@@ -12,6 +12,15 @@
   </head>
   <body>
 
+	  <nav class="p-1 navbar d-flex justify-content-between navbar-expand-lg navbar-dark bg-dark">
+		  <div class="navbar-nav mx-2 mx-sm-2">
+			  <a class="nav-item nav-link" href="{% url 'home' %}">Home</a>
+		  </div>
+		  <form class="form-inline">
+			  <input class="form-control mr-sm-2" type="search" placeholder="City", aria-label="search">
+			  <button class="btn btn-outline-success my-2 my-sm-0 bg-light" type="submit">Search</button>
+		  </form>
+	  </nav>
 	  <div class="container-fluid">
 		{% block content %}
 
